@@ -1,0 +1,41 @@
+int redLED1 = 3;
+int redLED2 = 4;
+int redLED3 = 5;
+void setup()
+{
+pinMode(A0, INPUT);
+pinMode(redLED1, OUTPUT);
+pinMode(redLED2, OUTPUT);
+pinMode(redLED3, OUTPUT);
+Serial.begin(9600);
+}
+void loop()
+{
+long LDRReading = analogRead(A0);
+Serial.print("LDR Reading: ");
+Serial.println(LDRReading);
+if(LDRReading >= 700)
+{
+digitalWrite(redLED1, HIGH);
+digitalWrite(redLED2, HIGH);
+digitalWrite(redLED3, HIGH);
+}
+else if (LDRReading >= 350)
+{
+digitalWrite(redLED1, LOW);
+digitalWrite(redLED2, HIGH);
+digitalWrite(redLED3, HIGH);
+}
+else if (LDRReading >= 150)
+{
+digitalWrite(redLED1, LOW);
+digitalWrite(redLED2, LOW);
+digitalWrite(redLED3, HIGH);
+}
+else
+{
+digitalWrite(redLED1, LOW);
+digitalWrite(redLED2, LOW);
+digitalWrite(redLED3, LOW);
+}
+}

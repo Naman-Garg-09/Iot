@@ -1,0 +1,10 @@
+Experiment 1: Familiarise with Arduino UNO and interface LED/Buzzer with Arduino and write a program to turn ON LED for 1 sec after every 2 seconds.
+void setup() 
+{ pinMode(2, OUTPUT); 
+}
+void loop()
+{ digitalWrite(2, HIGH);
+delay(1000);
+digitalWrite(2, LOW); 
+delay(2000); 
+}

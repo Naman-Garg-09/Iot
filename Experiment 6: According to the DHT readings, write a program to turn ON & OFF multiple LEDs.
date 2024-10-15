@@ -1,0 +1,42 @@
+#include <DFRobot_DHT11.h>
+DFRobot_DHT11 DHT;
+#define DHT11_PIN 6
+int redLED1 = 3;
+int redLED2 = 4;
+int redLED3 = 5;
+void setup()
+{
+Serial.begin(9600);
+pinMode(DHT11_PIN, INPUT);
+pinMode(redLED1, OUTPUT);
+pinMode(redLED2, OUTPUT);
+pinMode(redLED3, OUTPUT);
+}
+void loop()
+{
+DHT.read(DHT11_PIN);
+Serial.print("temperature:");
+Serial.print(DHT.temperature);
+Serial.print(", humidity:");
+Serial.println(DHT.humidity);
+if(DHT.humidity >= 80 || DHT.temperature >= 30)
+{
+digitalWrite(redLED1, HIGH);
+digitalWrite(redLED2, HIGH);
+digitalWrite(redLED3, HIGH);
+}
+else if(DHT.humidity >= 70 || DHT.temperature
+< 26)
+{
+digitalWrite(redLED1, LOW);
+digitalWrite(redLED2, HIGH);
+digitalWrite(redLED3, HIGH);
+}
+else
+{
+digitalWrite(redLED1, LOW);
+digitalWrite(redLED2, LOW);
+digitalWrite(redLED3, HIGH);
+}
+delay(1000);
+}
